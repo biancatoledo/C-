@@ -5,14 +5,13 @@
 using namespace std;
 
 /* Bernoulli Trials Simulator */
-//B: APPLY MONTE CARLO
-//You can change these for debugging, but reset them before the deadline
+//MONTE CARLO
 #define MAX_LUCK 10
-#define TRIALS 100 //before turning in, reset back to 100 trials
+#define TRIALS 100 
 #define FLIPS 40
 #define PERCENT_PER_STAR 1
 
-//Some sample code on how to flip a biased coin. You MUST use this code, and not the normal rand() function
+// below flips a biased coin. besides rand()
 bool coin_flip(mpz_class bias, gmp_randclass &RNG) {
 	mpz_class roll = RNG.get_z_range(MAX_LUCK); //Generates a number from 0 to 9
 	if (roll < bias) return true;
@@ -40,14 +39,13 @@ string asterisk(int count) {
 	return retval;
 }
 int main() {
-	//Remember not to modify these prompts, or you'll break the autograder and get no points
 	cout << "Please input a random seed: ";
 	mpz_class my_seed;
 	cin >> my_seed;
 	gmp_randclass RNG(gmp_randinit_mt);
 	RNG.seed(my_seed);
 
-	//Your luck score controls how likely you are to get a heads on a flip
+	//luck score controls how likely you are to get a heads on a flip
 	//At 0, you have a 0% chance, at 10 you have a 100% chance.
 	//By default, it should be 5 for a 50/50 chance.
 	//(This is called a "bias" on a coin flip)
@@ -59,8 +57,7 @@ int main() {
 		exit(1);
 	}
 
-	//YOU: Now, you're going to flip a coin FLIPS (default: 40) times, and count how many heads you get
-	//You will do this whole process TRIALS (default: 100) times
+
 	int bins[FLIPS+1] = {}; //Holds how many times we get each result, initialized to zero
 	//For example, after TRIALS times, bins[20] holds how many times we got exactly 20 heads out of 40 flips
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,25 +82,8 @@ int main() {
 		cout << "Bin " << setw(2) << setfill('0') << bin << ": " << setw(2) << asterisk(bins[bin]); // line not completed.
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	//Here's how you flip a coin.
-	//You'll need to put it inside a loop or two to make it work with LOOPS and TRIALS
-	bool success = coin_flip(luck, RNG); //The higher your luck, the higher the chance of success
 
-
-	//YOU: After you have done all 100 coin flips, you will print your results
-	//The format is as such:
-	// bin number: expected percent vs actual percent: stars equal to the actual percent
-	//Example:
-	// ...
-	// 19: 11% vs 10%: **********
-	// 20: 12% vs 15%: ***************
-	// 21: 11% vs 13%: *************
-	// ...
-	//Explanation:
-	// The bin number is how many heads came up, which will range from 0 to FLIPS
-	// The expected percent is the expected probability, given by (n choose k) * p^k * (1-p)^(n-k)
-	// The actual percent is how many actually got rolled (which will rarely match the expected number)
-	// 
+	bool success = coin_flip(luck, RNG); 
 
 	return 0;
 
