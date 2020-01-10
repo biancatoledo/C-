@@ -5,10 +5,7 @@
 using namespace std;
 
 //BEGIN GOLF
-//All semicolons between here and the end count as a stroke against you
-
 //This function will sort the given vector from vec[start] to vec[end], LEAST TO GREATEST
-//You must do it recursively, and can only write code in this section (between the BEGIN and END)
 void merge (vector <unsigned int> &vec , int start, int mid, int end) {
 	vector<unsigned int> left(vec.begin()+start, vec.begin()+mid+1), right(vec.begin()+mid+1, vec.begin()+end+1);
 	int i=0, j=0, o=mid-start+1, p=end-mid;
