@@ -1,0 +1,19 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\fs24 \cf0 (1) The Purpose\
+To familiarize you with the sem_init(), sem_wait(), sem_post(), sem_destroy(), \
+pthread_mutex_init(), pthread_mutex_lock(), pthread_mutex_unlock\
+(), and pthread_mutex_destroy() functions by writing a program in C++ running in the Debian VM environment for the producer-consumer (i.e.bounded-buffer).\
+\
+(2) The Problem\
+Design and implement a programming solution to the producer-consumer problem shown in class solved using two general semaphores (i.e.empty and full) and a binary semaphore (i.e.mutex). The two general semaphores are used to count the number of empty and full slots in the buffer pool, respectively, while the binary semaphore is used to protect the actual insertion or removal of items in the buffer pool. In this project, you need to use two binary semaphores (instead of one as shown in class) to synchronize the access to the buffer pool; one for the producer thread(s) and the other for the consumer thread(s).\
+\
+(3) The Approach\
+Internally, the buffer pool is implemented as a fixed-size array of type int. In this project, the maximum number of buffers in the buffer pool is 10. The buffer pool will be manipulated as a circular queue. Also, the buffer pool will be manipulated with two functions, insert_item() and remove_item(), which are called by the producer and consumer threads, respectively.\
+}
